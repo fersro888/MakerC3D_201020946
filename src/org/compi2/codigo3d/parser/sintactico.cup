@@ -24,10 +24,15 @@ action code
 
 terminal String ID, ENTERO, DECIMAL;
 terminal TokenC3D MAS, MENOS, MULT, DIV, POT, PAR_IZQ, PAR_DER;
+terminal TokenC3D AND, OR, IGUALIGUAL, DIFERENTE, MAYORQ, MENORQ, MAYORIQ, MENORIQ, NOT;
 nonterminal NodoC3D inicial, expresion;
 
+precedence left AND;
+precedence left OR;
+precedence left IGUALIGUAL, MAYORQ, MENORQ,MAYORIQ, MENORIQ, DIFERENTE;
 precedence left MAS, MENOS;
 precedence left MULT, DIV; 
+precedence right NOT;
 precedence right POT; 
 
 start with inicial;
@@ -72,6 +77,69 @@ expresion   ::= expresion:izq MAS expresion:der
                         String c3d = temp + " = " + izq.getCad() + " ^ " + der.getCad() + ";\n";
                         ControlC3D.agregarC3D(c3d);
                         RESULT = new NodoC3D(temp); 
+                    :}
+            |   expresion:izq IGUALIGUAL expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " == "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq DIFERENTE expresion:der
+                        {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " != "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                        :}
+            |   expresion:izq MAYORQ expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " > "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq MENORQ expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " < "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq MAYORIQ expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " >= "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq MENORIQ expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " <= "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq AND expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " && "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   expresion:izq OR expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = " + izq.getCad() + " || "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
+                    :}
+            |   NOT expresion:der
+                    {:
+                        String temp = ControlC3D.generaTemp();
+                        String c3d = temp + " = ! "+ der.getCad()+ ";\n";
+                        ControlC3D.agregarC3D(c3d);
+                        RESULT = new NodoC3D(temp);
                     :}
             |   MENOS expresion:exp 
                     {: 
