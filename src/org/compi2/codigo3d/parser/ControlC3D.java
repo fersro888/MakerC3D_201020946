@@ -9,6 +9,10 @@ public class ControlC3D {
     private static int temp = 0;
     private static String c3d = "";
     
+    private static int etiqueta= 0;
+    private static String etiquetaV="";
+    private static String etiquetaF="";
+    
     /**
      * Reinicia las variables estáticas relacionadas con la generación del
      * código de tres direcciones.
@@ -16,6 +20,10 @@ public class ControlC3D {
     public static void reiniciar(){
         temp = 0;
         c3d = "";
+        
+        etiqueta=0;
+        etiquetaV="";
+        etiquetaF="";
     }
     
     /**
@@ -24,6 +32,12 @@ public class ControlC3D {
      */
     public static String generaTemp(){
         return "t$"+temp++;
+    }
+    
+    
+    public static String generarEtiqueta()
+    {
+        return "L"+etiqueta++;
     }
     
     /**
@@ -35,12 +49,36 @@ public class ControlC3D {
         c3d += sentencia;
     }
     
+    public static void agregarEtiquetaV(String etiqueta){
+        if(etiquetaV.equals("")){
+            etiquetaV=etiqueta;
+        }else{
+            etiquetaV+=","+etiqueta;
+        }
+    }
+    
+    public static void agregarEtiquetaF(String etiqueta){
+        if(etiquetaF.equals("")){
+            etiquetaF=etiqueta;
+        }else{
+            etiquetaF+=","+etiqueta;
+        }
+    }
+    
     /**
      * Devuelve el código 3D generao hasta el momento de su invocación.
      * @return Código 3D generado
      */
     public static String getC3D(){
-        return c3d;
+        if(etiquetaV.equals("")||etiquetaF.equals("")){
+            c3d += "//Ultimo valor: t" +(temp-1);
+            return c3d;
+        }else{
+            c3d += "//Etiqueta de verdadero:"+etiquetaV+"\n";
+            c3d += "//Etiqueta de Falso:"+etiquetaF+"\n";
+            return c3d;
+        }
+        
     }
     
 }
