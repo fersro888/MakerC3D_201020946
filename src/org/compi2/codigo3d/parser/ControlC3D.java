@@ -4,6 +4,11 @@ package org.compi2.codigo3d.parser;
  *
  * @author esvux
  */
+
+//HOJA DE TRABAJO 3 - CORTOCIRCUITO LISTO
+//Nombre : María Fernanda Rodríguez Santos
+//Carné: 201020946
+
 public class ControlC3D {
     
     private static int temp = 0;

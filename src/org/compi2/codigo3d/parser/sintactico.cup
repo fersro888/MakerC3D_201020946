@@ -4,6 +4,8 @@ import java_cup.runtime.Symbol;
 
 //PARSER PARA EL ARCHIVO DE ESCENARIOS
 //HOJA DE TRABAJO 3 - CORTOCIRCUITO LISTO
+//Nombre : María Fernanda Rodríguez Santos
+//Carné: 201020946
 parser code
 {://Codigo visible
 

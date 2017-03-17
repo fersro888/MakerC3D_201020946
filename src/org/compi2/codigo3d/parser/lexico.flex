@@ -3,6 +3,9 @@ package org.compi2.codigo3d.parser;
 import java_cup.runtime.Symbol;
 
 //Scanner para generar C3D
+//HOJA DE TRABAJO 3 - CORTOCIRCUITO LISTO
+//Nombre : María Fernanda Rodríguez Santos
+//Carné: 201020946
 %%
 %{
     //Código de usuario

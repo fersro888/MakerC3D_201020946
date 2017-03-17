@@ -6,6 +6,11 @@ package org.compi2.codigo3d.parser;
  * los atributos que se consideren necesarios.
  * @author esvux
  */
+
+//HOJA DE TRABAJO 3 - CORTOCIRCUITO LISTO
+//Nombre : María Fernanda Rodríguez Santos
+//Carné: 201020946
+
 public class NodoC3D {
     private String cad;
     private String etiquetaV;
